@@ -483,11 +483,11 @@ Status LatController::ComputeControlCommand(
         matrix_q_(2, 2) * heading_err_interpolation_->Interpolate(
                               std::fabs(vehicle_state->linear_velocity()));
     common::math::SolveLQRProblem(matrix_adc_, matrix_bdc_, matrix_q_updated_,
-                                  matrix_r_, matrix_eps_, lqr_max_iteration_,
+                                  matrix_r_, lqr_eps_, lqr_max_iteration_,
                                   &matrix_k_);
   } else {
     common::math::SolveLQRProblem(matrix_adc_, matrix_bdc_, matrix_q_updated_,
-                                  matrix_r_, matrix_eps_, lqr_max_iteration_,
+                                  matrix_r_, lqr_eps_, lqr_max_iteration_,
                                   &matrix_k_);
   }
 
